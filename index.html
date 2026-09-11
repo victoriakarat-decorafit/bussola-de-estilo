@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Quiz para descobrir o estilo de decoração de interiores, feito para a Decorafit.">
+<title>Bússola de Estilo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #f6f5f5;
+    --grain-a: #ecebea;
+    --surface: #ffffff;
+    --surface-2: #ebe9e9;
+    --line: #d6d4d4;
+    --ink: #262d3b;
+    --ink-soft: #656d7d;
+    --accent: #ff6633;
+    --accent-ink: #262d3b;
+    --accent-soft: #ffe3d6;
+    --shadow: 0 1px 2px rgba(38,45,59,.06), 0 12px 28px -14px rgba(38,45,59,.22);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #1b1f27;
+      --grain-a: #20242d;
+      --surface: #262d3b;
+      --surface-2: #313848;
+      --line: #454d5f;
+      --ink: #f1f0ef;
+      --ink-soft: #aeb2bd;
+      --accent: #ff8659;
+      --accent-ink: #1b1f27;
+      --accent-soft: #4a3226;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 32px -16px rgba(0,0,0,.6);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #1b1f27;
+    --grain-a: #20242d;
+    --surface: #262d3b;
+    --surface-2: #313848;
+    --line: #454d5f;
+    --ink: #f1f0ef;
+    --ink-soft: #aeb2bd;
+    --accent: #ff8659;
+    --accent-ink: #1b1f27;
+    --accent-soft: #4a3226;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 32px -16px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin: 0; padding: 0; }
+  img{ max-width: 100%; }
+  [hidden]{ display: none !important; }
+  body{
+    background:
+      radial-gradient(circle at 12% 8%, var(--grain-a) 0, transparent 40%),
+      radial-gradient(circle at 88% 92%, var(--grain-a) 0, transparent 42%),
+      var(--bg);
+    color: var(--ink);
+    font-family: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    padding: 32px 16px;
+    padding-block: 32px;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  h1,h2,h3,.display{
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .wrap{ width: 100%; max-width: 560px; }
+
+  header.brand{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom: 18px; padding-inline: 4px;
+  }
+  .brand-name{
+    font-family:"Fraunces", serif; font-weight:600; font-size: 1.05rem;
+    letter-spacing: .01em;
+  }
+  .brand-ig{
+    font-size: .8rem; color: var(--ink-soft); text-decoration:none;
+    border-bottom: 1px solid transparent;
+  }
+  .brand-ig:hover{ border-color: var(--ink-soft); }
+
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .progress-track{
+    height: 5px; background: var(--surface-2);
+    position: relative;
+  }
+  .progress-fill{
+    height: 100%; background: var(--accent);
+    width: 0%; transition: width .35s ease;
+  }
+  @media (prefers-reduced-motion: reduce){ .progress-fill{ transition:none; } }
+
+  .pane{ padding: 30px 28px 32px; }
+  @media (max-width: 420px){ .pane{ padding: 24px 18px 26px; } }
+
+  [hidden]{ display:none !important; }
+
+  .eyebrow{
+    font-size: .72rem; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--accent); font-weight: 600; margin: 0 0 10px;
+  }
+
+  /* Intro */
+  .intro-title{ font-size: clamp(1.7rem, 5vw + .4rem, 2.35rem); line-height: 1.12; }
+  .intro-sub{ color: var(--ink-soft); font-size: .98rem; line-height:1.55; margin-top: 12px; max-width: 46ch; }
+  .swatch-row{ display:flex; gap:8px; margin: 22px 0; }
+  .swatch-row span{ width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(0,0,0,.08); flex: 0 0 auto; }
+  .meta-row{ display:flex; gap: 18px; margin-top: 18px; color: var(--ink-soft); font-size: .82rem; }
+  .meta-row span{ display:flex; align-items:center; gap: 6px; }
+
+  /* Buttons */
+  .btn{
+    appearance:none; border:none; cursor:pointer;
+    font-family: "Work Sans", sans-serif; font-weight: 600; font-size: .96rem;
+    padding: 14px 22px; border-radius: 999px;
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    text-decoration:none;
+  }
+  .btn-primary{ background: var(--accent); color: var(--accent-ink); width:100%; }
+  .btn-primary:hover{ filter: brightness(1.08); }
+  .btn-primary:disabled{ opacity:.5; cursor:not-allowed; filter:none; }
+  .btn-ghost{
+    background: transparent; color: var(--ink); border: 1px solid var(--line);
+    width:100%;
+  }
+  .btn-ghost:hover{ background: var(--surface-2); }
+  .btn-text{
+    background:none; border:none; color: var(--ink-soft); font-size:.85rem;
+    text-decoration: underline; text-underline-offset:3px; cursor:pointer; padding: 6px;
+  }
+  .btn:focus-visible, .opt:focus-visible, .btn-text:focus-visible, a:focus-visible, input:focus-visible{
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+
+  /* Questions */
+  .q-count{ font-size:.78rem; color: var(--ink-soft); margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+  .q-text{ font-size: 1.28rem; line-height: 1.3; margin-bottom: 20px; }
+  .opts{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    text-align:center; width:100%; background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: 14px; padding: 15px 16px; font-family:"Work Sans",sans-serif;
+    font-size: 1rem; font-weight: 500; color: var(--ink); cursor:pointer; line-height:1.4;
+    transition: border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .opt:hover{ border-color: var(--accent); }
+  .opt.selected{ border-color: var(--accent); background: var(--accent-soft); }
+  @media (prefers-reduced-motion: no-preference){ .opt:active{ transform: scale(.99); } }
+
+  .nav-row{ display:flex; justify-content:flex-start; margin-top: 18px; }
+
+  /* Lead form */
+  .lead-title{ font-size: 1.5rem; margin-bottom: 8px; }
+  .lead-sub{ color: var(--ink-soft); font-size:.92rem; margin-bottom: 22px; line-height:1.5; }
+  .field{ margin-bottom: 16px; }
+  .field label{ display:block; font-size:.82rem; font-weight:600; margin-bottom:6px; }
+  .field input{
+    width:100%; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink); font-family:"Work Sans",sans-serif; font-size: .95rem;
+  }
+  .field small{ display:block; color: var(--ink-soft); font-size: .74rem; margin-top: 5px; }
+  .privacy-note{ font-size: .74rem; color: var(--ink-soft); margin-top: 14px; line-height:1.5; }
+
+  /* Result */
+  .result-eyebrow{ display:flex; align-items:center; gap:8px; }
+  .result-hero{
+    width:100%; aspect-ratio: 4 / 3; border-radius: 16px; overflow:hidden;
+    border: 1px solid var(--line); box-shadow: var(--shadow); margin-top: 10px;
+  }
+  .result-hero img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .result-name{ font-size: clamp(1.9rem, 6vw, 2.5rem); margin-top: 18px; }
+  .result-tagline{ font-style: italic; color: var(--accent); margin-top: 6px; font-size: 1.02rem; }
+  .palette{ display:flex; gap:10px; margin: 20px 0 4px; }
+  .palette span{ width:38px; height:38px; border-radius: 10px; border: 1px solid rgba(0,0,0,.08); }
+  .result-desc{ margin-top: 16px; line-height:1.65; color: var(--ink); font-size: .98rem; }
+  .tips-title{ font-size: .78rem; text-transform:uppercase; letter-spacing:.1em; color: var(--ink-soft); margin: 26px 0 12px; font-weight:600; }
+  .tips{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+  .tips li{ display:flex; gap:10px; font-size:.94rem; line-height:1.5; }
+  .tips li::before{ content:"—"; color: var(--accent); flex:0 0 auto; }
+  .cta-stack{ display:flex; flex-direction:column; gap:10px; margin-top: 26px; }
+  .foot-links{ display:flex; justify-content:center; gap:18px; margin-top: 16px; }
+
+  footer.page-foot{ text-align:center; margin-top: 20px; color: var(--ink-soft); font-size:.76rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="brand">
+    <span class="brand-name">Decorafit</span>
+    <a class="brand-ig" href="https://instagram.com/decorafit_br" target="_blank" rel="noopener">@decorafit_br</a>
+  </header>
+
+  <div class="card">
+    <div class="progress-track" id="progressTrack" hidden>
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- INTRO -->
+    <section class="pane" id="screen-intro">
+      <p class="eyebrow">Quiz rápido · 2 minutos</p>
+      <h1 class="intro-title">Qual é o seu estilo de decoração?</h1>
+      <p class="intro-sub">Responda 7 perguntas sobre o que você gosta — cores, texturas, o clima da sua casa ideal — e descubra qual dos 6 estilos de decoração combina com você.</p>
+      <div class="swatch-row" aria-hidden="true">
+        <span style="background:#2f4a3e"></span>
+        <span style="background:#b7573f"></span>
+        <span style="background:#a9824f"></span>
+        <span style="background:#8c6e54"></span>
+        <span style="background:#1f2a44"></span>
+        <span style="background:#5c6e4a"></span>
+      </div>
+      <button class="btn btn-primary" id="startBtn">Começar o quiz →</button>
+      <div class="meta-row">
+        <span>7 perguntas</span>
+        <span>6 estilos possíveis</span>
+      </div>
+    </section>
+
+    <!-- QUESTIONS -->
+    <section class="pane" id="screen-question" hidden>
+      <p class="q-count" id="qCount"></p>
+      <h2 class="q-text" id="qText"></h2>
+      <div class="opts" id="qOpts"></div>
+    </section>
+
+    <!-- LEAD FORM -->
+    <section class="pane" id="screen-lead" hidden>
+      <p class="eyebrow">Quase lá</p>
+      <h2 class="lead-title">Pra onde a gente manda o seu resultado?</h2>
+      <p class="lead-sub">Deixa seu nome e WhatsApp e a gente já revela o seu estilo de decoração.</p>
+      <form id="leadForm">
+        <div class="field">
+          <label for="leadName">Nome</label>
+          <input type="text" id="leadName" name="leadName" autocomplete="name" placeholder="Como podemos te chamar?" required>
+        </div>
+        <div class="field">
+          <label for="leadPhone">WhatsApp</label>
+          <input type="tel" id="leadPhone" name="leadPhone" inputmode="tel" autocomplete="tel" placeholder="(11) 91234-5678" required>
+          <small>Só pra Decorafit entrar em contato com dicas de decoração.</small>
+        </div>
+        <button class="btn btn-primary" type="submit">Ver meu estilo →</button>
+      </form>
+      <p class="privacy-note">Seus dados ficam só neste dispositivo — não enviamos nada automaticamente sem você clicar em falar com a gente.</p>
+    </section>
+
+    <!-- RESULT -->
+    <section class="pane" id="screen-result" hidden>
+      <div class="result-eyebrow">
+        <p class="eyebrow" style="margin:0">Seu estilo é</p>
+      </div>
+      <div class="result-hero" id="rHero"></div>
+      <h2 class="result-name" id="rName"></h2>
+      <p class="result-tagline" id="rTagline"></p>
+      <div class="palette" id="rPalette" aria-hidden="true"></div>
+      <p class="result-desc" id="rDesc"></p>
+      <p class="tips-title">Como aplicar no seu espaço</p>
+      <ul class="tips" id="rTips"></ul>
+      <div class="cta-stack">
+        <a class="btn btn-primary" id="rCta" href="#" target="_blank" rel="noopener">Quero decorar minha casa assim →</a>
+        <button class="btn btn-ghost" id="rShare" type="button">Compartilhar meu resultado</button>
+      </div>
+      <div class="foot-links">
+        <button class="btn-text" id="rRestart" type="button">Refazer o quiz</button>
+        <a class="btn-text" href="https://instagram.com/decorafit_br" target="_blank" rel="noopener">Seguir @decorafit_br</a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="page-foot">Um quiz da Decorafit para te ajudar a decorar com mais identidade.</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var SITE_URL = "https://campanha.decorafit.com.br/";
+  var STYLE_ORDER = ["minimalista","escandinavo","industrial","boho","classico","rustico"];
+
+  var STYLES = {
+    minimalista: {
+      name: "Minimalista",
+      tagline: "Menos é mais — e cada peça importa.",
+      palette: ["#ffffff","#d9d5cc","#2b2823"],
+      desc: "Você valoriza espaços limpos, funcionais e sem excessos. Cada objeto tem um propósito, e a beleza está na simplicidade das formas e na ausência de ruído visual.",
+      tips: [
+        "Escolha poucas peças, mas de qualidade — uma peça-chave por ambiente já basta.",
+        "Mantenha a paleta em no máximo três tons neutros.",
+        "Esconda a bagunça: invista em armários e organizadores embutidos."
+      ],
+      img: "img/minimalista.jpg",
+      imgAlt: "Sala de estar minimalista, clean e com poucos objetos"
+    },
+    escandinavo: {
+      name: "Escandinavo",
+      tagline: "Luz, conforto e simplicidade nórdica.",
+      palette: ["#f5f1ea","#a9c4d3","#8c6e54"],
+      desc: "Sua casa ideal é clara, aconchegante e funcional. Você combina o minimalismo com toques de calor humano — madeira clara, tecidos macios e muita luz natural.",
+      tips: [
+        "Priorize janelas livres e cortinas leves para maximizar a luz.",
+        "Use madeira clara (freijó, carvalho, pinus) nos móveis.",
+        "Aposte em mantas, velas e texturas macias para o clima hygge."
+      ],
+      img: "img/escandinavo.jpg",
+      imgAlt: "Sala de estar escandinava, clara e com muita luz natural"
+    },
+    industrial: {
+      name: "Industrial",
+      tagline: "Urbano, cru e autêntico.",
+      palette: ["#3a3a38","#8b4a3a","#c8c2b8"],
+      desc: "Você se identifica com a estética de loft: tijolo aparente, metal, concreto e madeira de demolição. Gosta de ambientes com personalidade forte e um quê despojado.",
+      tips: [
+        "Deixe instalações elétricas e tubulações aparentes quando possível.",
+        "Combine metal preto fosco com madeira envelhecida.",
+        "Invista em uma boa luminária estilo Edison como peça central."
+      ],
+      img: "img/industrial.jpg",
+      imgAlt: "Sala de estar industrial, com parede de tijolo aparente e viga de madeira"
+    },
+    boho: {
+      name: "Boho Chic",
+      tagline: "Livre, colorido e cheio de histórias.",
+      palette: ["#b7573f","#c9a24b","#5c6e4a"],
+      desc: "Sua casa é uma colagem de viagens, texturas e cores. Você gosta de misturar estampas, plantas e objetos garimpados — nada combina demais, e é exatamente isso que funciona.",
+      tips: [
+        "Sobreponha tapetes de tamanhos e texturas diferentes.",
+        "Encha a casa de plantas — quanto mais, melhor.",
+        "Misture estampas com coragem: floral, étnico, geométrico."
+      ],
+      img: "img/boho.jpg",
+      imgAlt: "Sala de estar boho chic, com macramê, plantas e quadros"
+    },
+    classico: {
+      name: "Clássico Contemporâneo",
+      tagline: "Elegância que atravessa o tempo.",
+      palette: ["#1f2a44","#a9824f","#f2eee6"],
+      desc: "Você aprecia simetria, proporção e móveis que não saem de moda. Prefere ambientes sofisticados, com toques de dourado e tecidos nobres, sem cair no exagero.",
+      tips: [
+        "Aposte em simetria: pares de poltronas, abajures e quadros.",
+        "Use veludo e tecidos com textura em pontos-chave.",
+        "Adicione um detalhe dourado — moldura, puxador ou luminária."
+      ],
+      img: "img/classico.jpg",
+      imgAlt: "Sala clássica contemporânea, com boiserie e piso em espinha de peixe"
+    },
+    rustico: {
+      name: "Rústico Aconchegante",
+      tagline: "Uma casa que parece um abraço.",
+      palette: ["#6b4a32","#e8dfc8","#6b7a52"],
+      desc: "Você busca conforto acima de tudo. Madeira maciça, tecidos naturais e cantos aconchegantes fazem da sua casa um refúgio — o tipo de lugar onde todo mundo quer ficar até tarde.",
+      tips: [
+        "Invista em madeira maciça e peças de reaproveitamento.",
+        "Crie um canto aconchegante com mantas e almofadas em fibras naturais.",
+        "Use cerâmica artesanal e vasos de barro na decoração."
+      ],
+      img: "img/rustico.jpg",
+      imgAlt: "Canto aconchegante com lareira a lenha e parede de madeira"
+    }
+  };
+
+  var QUESTIONS = [
+    {
+      text: "Domingo de manhã, você quer acordar em uma casa que é...",
+      opts: [
+        { label: "Clean, sem excessos", style: "minimalista" },
+        { label: "Clara e cheia de luz", style: "escandinavo" },
+        { label: "Com tijolo e metal", style: "industrial" },
+        { label: "Cheia de plantas e cor", style: "boho" },
+        { label: "Elegante e atemporal", style: "classico" },
+        { label: "De madeira, com lareira", style: "rustico" }
+      ]
+    },
+    {
+      text: "Escolha uma paleta para pintar sua sala:",
+      opts: [
+        { label: "Branco, cinza e preto", style: "minimalista" },
+        { label: "Branco gelo e madeira clara", style: "escandinavo" },
+        { label: "Cinza chumbo e ferrugem", style: "industrial" },
+        { label: "Terracota e mostarda", style: "boho" },
+        { label: "Off-white e dourado", style: "classico" },
+        { label: "Marrom terra e verde musgo", style: "rustico" }
+      ]
+    },
+    {
+      text: "Qual objeto não pode faltar na sua casa?",
+      opts: [
+        { label: "Uma escultura discreta", style: "minimalista" },
+        { label: "Manta de lã e velas", style: "escandinavo" },
+        { label: "Luminária estilo Edison", style: "industrial" },
+        { label: "Macramê feito à mão", style: "boho" },
+        { label: "Espelho emoldurado", style: "classico" },
+        { label: "Vaso de cerâmica", style: "rustico" }
+      ]
+    },
+    {
+      text: "Como você recebe visitas em um sábado à noite?",
+      opts: [
+        { label: "Poucas pessoas, taça de vinho", style: "minimalista" },
+        { label: "Jantar à luz de velas", style: "escandinavo" },
+        { label: "Amigos e cerveja artesanal", style: "industrial" },
+        { label: "Roda de conversa no chão", style: "boho" },
+        { label: "Jantar posto, taças de cristal", style: "classico" },
+        { label: "Fondue perto da lareira", style: "rustico" }
+      ]
+    },
+    {
+      text: "Escolha o tecido do seu sofá dos sonhos:",
+      opts: [
+        { label: "Linho liso", style: "minimalista" },
+        { label: "Lã macia", style: "escandinavo" },
+        { label: "Couro envelhecido", style: "industrial" },
+        { label: "Veludo colorido", style: "boho" },
+        { label: "Veludo capitonê", style: "classico" },
+        { label: "Algodão cru", style: "rustico" }
+      ]
+    },
+    {
+      text: "Se sua casa fosse uma viagem, seria para...",
+      opts: [
+        { label: "Tóquio", style: "minimalista" },
+        { label: "Copenhague", style: "escandinavo" },
+        { label: "Nova York", style: "industrial" },
+        { label: "Marrocos", style: "boho" },
+        { label: "Paris", style: "classico" },
+        { label: "Toscana", style: "rustico" }
+      ]
+    },
+    {
+      text: "Qual frase mais combina com você?",
+      opts: [
+        { label: "Menos é mais", style: "minimalista" },
+        { label: "Simplicidade com conforto", style: "escandinavo" },
+        { label: "Gosto do autêntico", style: "industrial" },
+        { label: "Minha casa, minha história", style: "boho" },
+        { label: "Elegância não sai de moda", style: "classico" },
+        { label: "Casa boa é um abraço", style: "rustico" }
+      ]
+    }
+  ];
+
+  var state = {
+    qIndex: 0,
+    scores: {},
+    name: ""
+  };
+
+  var screens = {
+    intro: document.getElementById("screen-intro"),
+    question: document.getElementById("screen-question"),
+    lead: document.getElementById("screen-lead"),
+    result: document.getElementById("screen-result")
+  };
+  var progressTrack = document.getElementById("progressTrack");
+  var progressFill = document.getElementById("progressFill");
+
+  function showScreen(name){
+    Object.keys(screens).forEach(function(k){ screens[k].hidden = (k !== name); });
+    progressTrack.hidden = (name !== "question");
+    window.scrollTo({ top: 0, behavior: "instant" in window.scrollTo ? "instant" : "auto" });
+  }
+
+  function resetState(){
+    state.qIndex = 0;
+    state.scores = {};
+    STYLE_ORDER.forEach(function(s){ state.scores[s] = 0; });
+  }
+
+  function renderQuestion(){
+    var q = QUESTIONS[state.qIndex];
+    document.getElementById("qCount").textContent = "Pergunta " + (state.qIndex + 1) + " de " + QUESTIONS.length;
+    document.getElementById("qText").textContent = q.text;
+    progressFill.style.width = Math.round((state.qIndex / QUESTIONS.length) * 100) + "%";
+
+    var optsWrap = document.getElementById("qOpts");
+    optsWrap.innerHTML = "";
+    q.opts.forEach(function(opt){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "opt";
+      btn.textContent = opt.label;
+      btn.addEventListener("click", function(){ selectOption(opt.style); });
+      optsWrap.appendChild(btn);
+    });
+
+    showScreen("question");
+  }
+
+  function selectOption(styleKey){
+    state.scores[styleKey] = (state.scores[styleKey] || 0) + 1;
+    state.qIndex += 1;
+    if (state.qIndex < QUESTIONS.length){
+      renderQuestion();
+    } else {
+      progressFill.style.width = "100%";
+      showScreen("lead");
+    }
+  }
+
+  function computeResult(){
+    var best = STYLE_ORDER[0];
+    var bestScore = -1;
+    STYLE_ORDER.forEach(function(key){
+      var score = state.scores[key] || 0;
+      if (score > bestScore){
+        bestScore = score;
+        best = key;
+      }
+    });
+    return best;
+  }
+
+  function renderResult(){
+    var key = computeResult();
+    var style = STYLES[key];
+
+    document.getElementById("rHero").innerHTML =
+      '<img src="' + style.img + '" alt="' + style.imgAlt + '" loading="lazy">';
+    document.getElementById("rName").textContent = style.name;
+    document.getElementById("rTagline").textContent = style.tagline;
+    document.getElementById("rDesc").textContent =
+      (state.name ? state.name + ", este" : "Este") + " é o seu estilo: " + style.desc;
+
+    var paletteWrap = document.getElementById("rPalette");
+    paletteWrap.innerHTML = "";
+    style.palette.forEach(function(hex){
+      var sw = document.createElement("span");
+      sw.style.background = hex;
+      paletteWrap.appendChild(sw);
+    });
+
+    var tipsWrap = document.getElementById("rTips");
+    tipsWrap.innerHTML = "";
+    style.tips.forEach(function(tip){
+      var li = document.createElement("li");
+      li.textContent = tip;
+      tipsWrap.appendChild(li);
+    });
+
+    document.getElementById("rCta").href = SITE_URL;
+
+    showScreen("result");
+  }
+
+  document.getElementById("startBtn").addEventListener("click", function(){
+    resetState();
+    renderQuestion();
+  });
+
+  document.getElementById("leadForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var nameEl = document.getElementById("leadName");
+    state.name = nameEl.value.trim().split(" ")[0] || "";
+    renderResult();
+  });
+
+  document.getElementById("rRestart").addEventListener("click", function(){
+    document.getElementById("leadForm").reset();
+    resetState();
+    showScreen("intro");
+  });
+
+  document.getElementById("rShare").addEventListener("click", function(){
+    var key = computeResult();
+    var style = STYLES[key];
+    var text = "Descobri que meu estilo de decoração é " + style.name + "! Faça o quiz da Decorafit e descubra o seu:";
+    var url = location.href;
+
+    if (navigator.share){
+      navigator.share({ text: text, url: url }).catch(function(){});
+    } else {
+      var fallback = text + " " + url;
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(fallback).then(function(){
+          var btn = document.getElementById("rShare");
+          var original = btn.textContent;
+          btn.textContent = "Link copiado!";
+          setTimeout(function(){ btn.textContent = original; }, 1800);
+        }).catch(function(){});
+      }
+    }
+  });
+
+  resetState();
+})();
+</script>
+</body>
+</html>
