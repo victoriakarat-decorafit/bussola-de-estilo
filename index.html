@@ -164,6 +164,15 @@
   }
 
   /* Questions */
+  .q-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px; }
+  .q-back{
+    appearance:none; background:none; border:none; cursor:pointer; padding:0;
+    font-family:"Montserrat",sans-serif; font-size:.82rem; font-weight:700;
+    color: var(--ink-soft); transition: color .15s ease;
+  }
+  .q-back:hover{ color: var(--ink); }
+  .q-back[hidden]{ display:none; }
+  #leadBack{ display:block; margin-bottom: 10px; }
   .q-count{ font-size:.78rem; color: var(--ink-soft); margin-bottom: 6px; font-variant-numeric: tabular-nums; }
   .q-text{ font-size: 1.28rem; line-height: 1.3; margin-bottom: 20px; }
   .opts{ display:flex; flex-direction:column; gap:10px; }
@@ -242,16 +251,20 @@
 
     <!-- QUESTIONS -->
     <section class="pane" id="screen-question" hidden>
-      <p class="q-count" id="qCount"></p>
+      <div class="q-head">
+        <button type="button" class="q-back" id="qBack">← Voltar</button>
+        <p class="q-count" id="qCount"></p>
+      </div>
       <h2 class="q-text" id="qText"></h2>
       <div class="opts" id="qOpts"></div>
     </section>
 
     <!-- LEAD FORM -->
     <section class="pane" id="screen-lead" hidden>
+      <button type="button" class="q-back" id="leadBack">← Voltar</button>
       <p class="eyebrow">Quase lá</p>
-      <h2 class="lead-title">Pra onde a gente manda o seu resultado?</h2>
-      <p class="lead-sub">Deixa seu nome e WhatsApp e a gente já revela o seu estilo de decoração.</p>
+      <h2 class="lead-title">Seu estilo está pronto!</h2>
+      <p class="lead-sub">Deixe seus dados para ver o resultado agora — e receber mais conteúdos sobre design de interiores.</p>
       <form id="leadForm">
         <div class="field">
           <label for="leadName">Nome</label>
@@ -528,7 +541,8 @@
   var state = {
     qIndex: 0,
     scores: {},
-    name: ""
+    name: "",
+    history: []
   };
 
   var screens = {
@@ -549,11 +563,13 @@
   function resetState(){
     state.qIndex = 0;
     state.scores = {};
+    state.history = [];
     STYLE_ORDER.forEach(function(s){ state.scores[s] = 0; });
   }
 
   function renderQuestion(){
     var q = QUESTIONS[state.qIndex];
+    document.getElementById("qBack").hidden = (state.qIndex === 0);
     document.getElementById("qCount").textContent = "Pergunta " + (state.qIndex + 1) + " de " + QUESTIONS.length;
     document.getElementById("qText").textContent = q.text;
     progressFill.style.width = Math.round((state.qIndex / QUESTIONS.length) * 100) + "%";
@@ -573,6 +589,7 @@
   }
 
   function selectOption(weights){
+    state.history.push(weights);
     Object.keys(weights).forEach(function(styleKey){
       state.scores[styleKey] = (state.scores[styleKey] || 0) + weights[styleKey];
     });
@@ -583,6 +600,16 @@
       progressFill.style.width = "100%";
       showScreen("lead");
     }
+  }
+
+  function goBack(){
+    if (state.qIndex === 0) return;
+    var weights = state.history.pop();
+    Object.keys(weights).forEach(function(styleKey){
+      state.scores[styleKey] -= weights[styleKey];
+    });
+    state.qIndex -= 1;
+    renderQuestion();
   }
 
   function computeResult(){
@@ -629,6 +656,11 @@
 
     showScreen("result");
   }
+
+  document.getElementById("qBack").addEventListener("click", goBack);
+  document.getElementById("leadBack").addEventListener("click", function(){
+    goBack();
+  });
 
   document.getElementById("startBtn").addEventListener("click", function(){
     resetState();
