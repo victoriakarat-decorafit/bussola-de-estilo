@@ -7,54 +7,53 @@
 <title>Bússola de Estilo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg: #f6f5f5;
+    --bg: #f7f5f2;
     --grain-a: #ecebea;
-    --surface: #ffffff;
+    --surface: #f68859;
     --surface-2: #ebe9e9;
     --line: #d6d4d4;
-    --ink: #262d3b;
-    --ink-soft: #656d7d;
-    --accent: #ff6633;
-    --accent-ink: #262d3b;
+    --ink: #ffffff;
+    --ink-soft: #ffe8de;
+    --accent: #cc734e;
+    --accent-ink: #2b1810;
     --accent-soft: #ffe3d6;
-    --shadow: 0 1px 2px rgba(38,45,59,.06), 0 12px 28px -14px rgba(38,45,59,.22);
+    --shadow: 0 1px 2px rgba(43,33,24,.06), 0 12px 28px -14px rgba(43,33,24,.22);
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg: #1b1f27;
-      --grain-a: #20242d;
-      --surface: #262d3b;
-      --surface-2: #313848;
-      --line: #454d5f;
-      --ink: #f1f0ef;
-      --ink-soft: #aeb2bd;
-      --accent: #ff8659;
-      --accent-ink: #1b1f27;
+      --bg: #f7f5f2;
+      --grain-a: #ecebea;
+      --surface: #f68859;
+      --surface-2: #4a3327;
+      --line: #8a4f34;
+      --ink: #ffffff;
+      --ink-soft: #ffe8de;
+      --accent: #cc734e;
+      --accent-ink: #2b1810;
       --accent-soft: #4a3226;
       --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 32px -16px rgba(0,0,0,.6);
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg: #1b1f27;
-    --grain-a: #20242d;
-    --surface: #262d3b;
-    --surface-2: #313848;
-    --line: #454d5f;
-    --ink: #f1f0ef;
-    --ink-soft: #aeb2bd;
-    --accent: #ff8659;
-    --accent-ink: #1b1f27;
+    --bg: #f7f5f2;
+    --grain-a: #ecebea;
+    --surface: #f68859;
+    --surface-2: #4a3327;
+    --line: #8a4f34;
+    --ink: #ffffff;
+    --ink-soft: #ffe8de;
+    --accent: #cc734e;
+    --accent-ink: #2b1810;
     --accent-soft: #4a3226;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 32px -16px rgba(0,0,0,.6);
     color-scheme: dark;
   }
-
   *{ box-sizing: border-box; }
   html, body{ margin: 0; padding: 0; }
   img{ max-width: 100%; }
@@ -65,7 +64,8 @@
       radial-gradient(circle at 88% 92%, var(--grain-a) 0, transparent 42%),
       var(--bg);
     color: var(--ink);
-    font-family: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
     padding: 32px 16px;
     padding-block: 32px;
     min-height: 100vh;
@@ -74,8 +74,8 @@
     justify-content: center;
   }
   h1,h2,h3,.display{
-    font-family: "Fraunces", ui-serif, Georgia, serif;
-    font-weight: 500;
+    font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
     letter-spacing: -0.01em;
     text-wrap: balance;
     margin: 0;
@@ -86,19 +86,16 @@
     display:flex; align-items:center; justify-content:space-between;
     margin-bottom: 18px; padding-inline: 4px;
   }
-  .brand-name{
-    font-family:"Fraunces", serif; font-weight:600; font-size: 1.05rem;
-    letter-spacing: .01em;
-  }
+  .brand-logo{ height: 14px; width: auto; display:block; }
   .brand-ig{
-    font-size: .8rem; color: var(--ink-soft); text-decoration:none;
+    font-size: .8rem; color: #7a6f65; text-decoration:none;
     border-bottom: 1px solid transparent;
   }
-  .brand-ig:hover{ border-color: var(--ink-soft); }
+  .brand-ig:hover{ border-color: #7a6f65; }
 
   .card{
     background: var(--surface);
-    border: 1px solid var(--line);
+    border: none;
     border-radius: 22px;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -120,34 +117,37 @@
   [hidden]{ display:none !important; }
 
   .eyebrow{
-    font-size: .72rem; text-transform: uppercase; letter-spacing: .12em;
-    color: var(--accent); font-weight: 600; margin: 0 0 10px;
+    display: inline-block;
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .12em;
+    color: #f7f5f2; font-weight: 700; margin: 0 0 14px;
+    background: #262D3B; padding: 6px 14px; border-radius: 999px;
   }
 
   /* Intro */
   .intro-title{ font-size: clamp(1.7rem, 5vw + .4rem, 2.35rem); line-height: 1.12; }
   .intro-sub{ color: var(--ink-soft); font-size: .98rem; line-height:1.55; margin-top: 12px; max-width: 46ch; }
-  .swatch-row{ display:flex; gap:8px; margin: 22px 0; }
-  .swatch-row span{ width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(0,0,0,.08); flex: 0 0 auto; }
-  .meta-row{ display:flex; gap: 18px; margin-top: 18px; color: var(--ink-soft); font-size: .82rem; }
-  .meta-row span{ display:flex; align-items:center; gap: 6px; }
+  .intro-hero{
+    width:100%; aspect-ratio: 4 / 3; border-radius: 16px; overflow:hidden;
+    box-shadow: var(--shadow); margin-top: 20px; margin-bottom: 24px;
+  }
+  .intro-hero img{ display:block; width:100%; height:100%; object-fit:cover; }
 
   /* Buttons */
   .btn{
     appearance:none; border:none; cursor:pointer;
-    font-family: "Work Sans", sans-serif; font-weight: 600; font-size: .96rem;
+    font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .96rem;
     padding: 14px 22px; border-radius: 999px;
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
     text-decoration:none;
   }
-  .btn-primary{ background: var(--accent); color: var(--accent-ink); width:100%; }
-  .btn-primary:hover{ filter: brightness(1.08); }
+  .btn-primary{ background: var(--accent); color: #f7f5f2; width:100%; transition: background .15s ease, color .15s ease; }
+  .btn-primary:hover, .btn-primary:active{ background: #262D3B; color: #ffffff; }
   .btn-primary:disabled{ opacity:.5; cursor:not-allowed; filter:none; }
   .btn-ghost{
-    background: transparent; color: var(--ink); border: 1px solid var(--line);
-    width:100%;
+    background: transparent; color: #262D3B; border: 1.5px solid #262D3B;
+    width:100%; transition: background .15s ease, color .15s ease;
   }
-  .btn-ghost:hover{ background: var(--surface-2); }
+  .btn-ghost:hover{ background: #262D3B; color: #f7f5f2; }
   .btn-text{
     background:none; border:none; color: var(--ink-soft); font-size:.85rem;
     text-decoration: underline; text-underline-offset:3px; cursor:pointer; padding: 6px;
@@ -161,13 +161,13 @@
   .q-text{ font-size: 1.28rem; line-height: 1.3; margin-bottom: 20px; }
   .opts{ display:flex; flex-direction:column; gap:10px; }
   .opt{
-    text-align:center; width:100%; background: var(--surface-2); border: 1px solid var(--line);
-    border-radius: 14px; padding: 15px 16px; font-family:"Work Sans",sans-serif;
-    font-size: 1rem; font-weight: 500; color: var(--ink); cursor:pointer; line-height:1.4;
-    transition: border-color .15s ease, background .15s ease, transform .1s ease;
+    text-align:center; width:100%; background: var(--accent); border: 1px solid var(--accent);
+    border-radius: 14px; padding: 15px 16px; font-family:"Montserrat",sans-serif;
+    font-size: 1rem; font-weight: 700; color: #f7f5f2; cursor:pointer; line-height:1.4;
+    transition: border-color .15s ease, background .15s ease, color .15s ease, transform .1s ease;
   }
-  .opt:hover{ border-color: var(--accent); }
-  .opt.selected{ border-color: var(--accent); background: var(--accent-soft); }
+  .opt:hover{ border-color: #262D3B; background: #262D3B; color: #ffffff; }
+  .opt.selected{ border-color: #262D3B; background: #262D3B; color: #ffffff; }
   @media (prefers-reduced-motion: no-preference){ .opt:active{ transform: scale(.99); } }
 
   .nav-row{ display:flex; justify-content:flex-start; margin-top: 18px; }
@@ -176,41 +176,45 @@
   .lead-title{ font-size: 1.5rem; margin-bottom: 8px; }
   .lead-sub{ color: var(--ink-soft); font-size:.92rem; margin-bottom: 22px; line-height:1.5; }
   .field{ margin-bottom: 16px; }
-  .field label{ display:block; font-size:.82rem; font-weight:600; margin-bottom:6px; }
+  .field label{ display:block; font-size:.82rem; font-weight:700; margin-bottom:6px; }
   .field input{
-    width:100%; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line);
-    background: var(--surface); color: var(--ink); font-family:"Work Sans",sans-serif; font-size: .95rem;
+    width:100%; padding: 13px 14px; border-radius: 12px; border: none;
+    background: var(--accent); color: var(--ink); font-family:"Montserrat",sans-serif; font-size: .95rem;
   }
   .field small{ display:block; color: var(--ink-soft); font-size: .74rem; margin-top: 5px; }
   .privacy-note{ font-size: .74rem; color: var(--ink-soft); margin-top: 14px; line-height:1.5; }
 
   /* Result */
-  .result-eyebrow{ display:flex; align-items:center; gap:8px; }
+  .result-eyebrow{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
   .result-hero{
     width:100%; aspect-ratio: 4 / 3; border-radius: 16px; overflow:hidden;
-    border: 1px solid var(--line); box-shadow: var(--shadow); margin-top: 10px;
+    border: none; box-shadow: var(--shadow); margin-top: 10px;
   }
   .result-hero img{ display:block; width:100%; height:100%; object-fit:cover; }
   .result-name{ font-size: clamp(1.9rem, 6vw, 2.5rem); margin-top: 18px; }
-  .result-tagline{ font-style: italic; color: var(--accent); margin-top: 6px; font-size: 1.02rem; }
-  .palette{ display:flex; gap:10px; margin: 20px 0 4px; }
-  .palette span{ width:38px; height:38px; border-radius: 10px; border: 1px solid rgba(0,0,0,.08); }
+  .result-name::after{ content:""; display:block; width:56px; height:5px; border-radius:999px; background:#262D3B; margin-top:12px; }
+  .result-tagline{ font-style: italic; color: #262D3B; margin-top: 6px; font-size: 1.02rem; }
+  .palette{ display:flex; gap:0; margin: 22px 0 6px; width:fit-content; }
+  .palette span{ width:40px; height:40px; border-radius: 0; border:none; }
   .result-desc{ margin-top: 16px; line-height:1.65; color: var(--ink); font-size: .98rem; }
-  .tips-title{ font-size: .78rem; text-transform:uppercase; letter-spacing:.1em; color: var(--ink-soft); margin: 26px 0 12px; font-weight:600; }
-  .tips{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
-  .tips li{ display:flex; gap:10px; font-size:.94rem; line-height:1.5; }
-  .tips li::before{ content:"—"; color: var(--accent); flex:0 0 auto; }
+  .tips-title{ font-size: .78rem; text-transform:uppercase; letter-spacing:.1em; color: var(--ink-soft); margin: 26px 0 12px; font-weight:700; }
+  .tips{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; counter-reset: tipnum; }
+  .tips li{ display:flex; gap:12px; font-size:.94rem; line-height:1.5; align-items:flex-start; }
+  .tips li::before{
+    counter-increment: tipnum; content: counter(tipnum);
+    flex:0 0 auto; width:24px; height:24px; margin-top:1px; border-radius:50%;
+    background:#262D3B; color:#f7f5f2; font-size:.72rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
   .cta-stack{ display:flex; flex-direction:column; gap:10px; margin-top: 26px; }
   .foot-links{ display:flex; justify-content:center; gap:18px; margin-top: 16px; }
-
-  footer.page-foot{ text-align:center; margin-top: 20px; color: var(--ink-soft); font-size:.76rem; }
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <header class="brand">
-    <span class="brand-name">Decorafit</span>
+    <img class="brand-logo" src="img/logo-decorafit.png" alt="Decorafit">
     <a class="brand-ig" href="https://instagram.com/decorafit_br" target="_blank" rel="noopener">@decorafit_br</a>
   </header>
 
@@ -223,20 +227,11 @@
     <section class="pane" id="screen-intro">
       <p class="eyebrow">Quiz rápido · 2 minutos</p>
       <h1 class="intro-title">Qual é o seu estilo de decoração?</h1>
-      <p class="intro-sub">Responda 7 perguntas sobre o que você gosta — cores, texturas, o clima da sua casa ideal — e descubra qual dos 6 estilos de decoração combina com você.</p>
-      <div class="swatch-row" aria-hidden="true">
-        <span style="background:#2f4a3e"></span>
-        <span style="background:#b7573f"></span>
-        <span style="background:#a9824f"></span>
-        <span style="background:#8c6e54"></span>
-        <span style="background:#1f2a44"></span>
-        <span style="background:#5c6e4a"></span>
+      <p class="intro-sub">Responda 10 perguntas sobre o que você gosta (cores, texturas, o clima do seu apê ideal), e descubra qual dos 9 estilos de decoração combina com você.</p>
+      <div class="intro-hero">
+        <img src="img/intro-hero.jpg" alt="Colagem de ambientes decorados em estilos diferentes, representando a busca pelo estilo ideal" loading="lazy">
       </div>
       <button class="btn btn-primary" id="startBtn">Começar o quiz →</button>
-      <div class="meta-row">
-        <span>7 perguntas</span>
-        <span>6 estilos possíveis</span>
-      </div>
     </section>
 
     <!-- QUESTIONS -->
@@ -257,6 +252,10 @@
           <input type="text" id="leadName" name="leadName" autocomplete="name" placeholder="Como podemos te chamar?" required>
         </div>
         <div class="field">
+          <label for="leadEmail">E-mail</label>
+          <input type="email" id="leadEmail" name="leadEmail" autocomplete="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="field">
           <label for="leadPhone">WhatsApp</label>
           <input type="tel" id="leadPhone" name="leadPhone" inputmode="tel" autocomplete="tel" placeholder="(11) 91234-5678" required>
           <small>Só pra Decorafit entrar em contato com dicas de decoração.</small>
@@ -272,14 +271,14 @@
         <p class="eyebrow" style="margin:0">Seu estilo é</p>
       </div>
       <div class="result-hero" id="rHero"></div>
+      <div class="palette" id="rPalette" aria-hidden="true"></div>
       <h2 class="result-name" id="rName"></h2>
       <p class="result-tagline" id="rTagline"></p>
-      <div class="palette" id="rPalette" aria-hidden="true"></div>
       <p class="result-desc" id="rDesc"></p>
       <p class="tips-title">Como aplicar no seu espaço</p>
       <ul class="tips" id="rTips"></ul>
       <div class="cta-stack">
-        <a class="btn btn-primary" id="rCta" href="#" target="_blank" rel="noopener">Quero decorar minha casa assim →</a>
+        <a class="btn btn-primary" id="rCta" href="#" target="_blank" rel="noopener">Quero decorar meu apê assim →</a>
         <button class="btn btn-ghost" id="rShare" type="button">Compartilhar meu resultado</button>
       </div>
       <div class="foot-links">
@@ -289,7 +288,6 @@
     </section>
   </div>
 
-  <footer class="page-foot">Um quiz da Decorafit para te ajudar a decorar com mais identidade.</footer>
 </div>
 
 <script>
@@ -297,27 +295,54 @@
   "use strict";
 
   var SITE_URL = "https://campanha.decorafit.com.br/";
-  var STYLE_ORDER = ["minimalista","escandinavo","industrial","boho","classico","rustico"];
+  var LEADS_ENDPOINT = "https://script.google.com/macros/s/AKfycbx3qduzy6yMw5aUOBvMXDnwPeg3Li1aUep0XjENa8fribxZ3R1WvWzszrF14KNyu2xQ/exec";
+  var STYLE_ORDER = ["contemporaneo","japandi","minimalista","escandinavo","boho","industrial","organico","midcentury","classico"];
 
   var STYLES = {
+    contemporaneo: {
+      name: "Contemporâneo",
+      tagline: "Atual, funcional e sem exageros.",
+      palette: ["#f2f0ec","#b8ada0","#2b2b2b"],
+      desc: "Você gosta de ambientes integrados, linhas retas e uma mistura equilibrada de materiais. Seu apê ideal é prático, atual e nunca sai de moda — sem cair no vazio do minimalismo extremo.",
+      tips: [
+        "Invista em marcenaria planejada para integrar ambientes e esconder a bagunça.",
+        "Combine no máximo 3–4 materiais (madeira, metal, pedra, tecido) sem exagerar em nenhum.",
+        "Use uma paleta neutra como base e reserve a cor para poucos pontos de destaque."
+      ],
+      img: "img/contemporaneo.jpg",
+      imgAlt: "Sala de estar contemporânea, com marcenaria planejada e paleta neutra"
+    },
+    japandi: {
+      name: "Japandi",
+      tagline: "Calma japonesa, aconchego escandinavo.",
+      palette: ["#e8dcc8","#8a6a4f","#221f1c"],
+      desc: "Você busca simplicidade com alma. Ambientes limpos, mas nunca frios — madeira natural, tons terrosos e um ritual quase zen na forma de morar.",
+      tips: [
+        "Prefira móveis baixos, de linhas retas e madeira natural à mostra.",
+        "Use uma paleta em tons terrosos: bege, caramelo, preto fosco.",
+        "Menos objetos, mas escolhidos com intenção — nada de decoração por decoração."
+      ],
+      img: "img/japandi.jpg",
+      imgAlt: "Sala de estar estilo Japandi, com madeira natural e tons terrosos"
+    },
     minimalista: {
-      name: "Minimalista",
-      tagline: "Menos é mais — e cada peça importa.",
-      palette: ["#ffffff","#d9d5cc","#2b2823"],
-      desc: "Você valoriza espaços limpos, funcionais e sem excessos. Cada objeto tem um propósito, e a beleza está na simplicidade das formas e na ausência de ruído visual.",
+      name: "Minimalista Aconchegante",
+      tagline: "Menos é mais — com acolhimento.",
+      palette: ["#fbfaf6","#d8cdbe","#6b5f52"],
+      desc: "Você valoriza espaços limpos e funcionais, mas sem abrir mão do conforto. Bege, madeira e texturas naturais suavizam o minimalismo puro e trazem sensação de apê, não de galeria.",
       tips: [
         "Escolha poucas peças, mas de qualidade — uma peça-chave por ambiente já basta.",
-        "Mantenha a paleta em no máximo três tons neutros.",
-        "Esconda a bagunça: invista em armários e organizadores embutidos."
+        "Fuja do branco frio: use bege, areia e off-white como base.",
+        "Adicione uma manta ou almofada em linho para quebrar a rigidez."
       ],
       img: "img/minimalista.jpg",
-      imgAlt: "Sala de estar minimalista, clean e com poucos objetos"
+      imgAlt: "Sala de estar minimalista e aconchegante, com tons neutros e texturas naturais"
     },
     escandinavo: {
       name: "Escandinavo",
       tagline: "Luz, conforto e simplicidade nórdica.",
       palette: ["#f5f1ea","#a9c4d3","#8c6e54"],
-      desc: "Sua casa ideal é clara, aconchegante e funcional. Você combina o minimalismo com toques de calor humano — madeira clara, tecidos macios e muita luz natural.",
+      desc: "Seu apê ideal é claro, aconchegante e funcional. Você combina o minimalismo com toques de calor humano — madeira clara, tecidos macios e muita luz natural.",
       tips: [
         "Priorize janelas livres e cortinas leves para maximizar a luz.",
         "Use madeira clara (freijó, carvalho, pinus) nos móveis.",
@@ -325,6 +350,19 @@
       ],
       img: "img/escandinavo.jpg",
       imgAlt: "Sala de estar escandinava, clara e com muita luz natural"
+    },
+    boho: {
+      name: "Boho Chic",
+      tagline: "Livre, colorido e cheio de histórias.",
+      palette: ["#b7573f","#c9a24b","#5c6e4a"],
+      desc: "Seu apê é uma colagem de viagens, texturas e cores. Você gosta de misturar estampas, plantas e objetos garimpados — nada combina demais, e é exatamente isso que funciona.",
+      tips: [
+        "Sobreponha tapetes de tamanhos e texturas diferentes.",
+        "Encha o apê de plantas — quanto mais, melhor.",
+        "Misture estampas com coragem: floral, étnico, geométrico."
+      ],
+      img: "img/boho.jpg",
+      imgAlt: "Sala de estar boho chic, com macramê, plantas e quadros"
     },
     industrial: {
       name: "Industrial",
@@ -339,18 +377,31 @@
       img: "img/industrial.jpg",
       imgAlt: "Sala de estar industrial, com parede de tijolo aparente e viga de madeira"
     },
-    boho: {
-      name: "Boho Chic",
-      tagline: "Livre, colorido e cheio de histórias.",
-      palette: ["#b7573f","#c9a24b","#5c6e4a"],
-      desc: "Sua casa é uma colagem de viagens, texturas e cores. Você gosta de misturar estampas, plantas e objetos garimpados — nada combina demais, e é exatamente isso que funciona.",
+    organico: {
+      name: "Orgânico Moderno",
+      tagline: "Formas fluidas, textura natural.",
+      palette: ["#d9c9b6","#a67c52","#5a4632"],
+      desc: "Você se atrai por curvas, materiais brutos trabalhados com delicadeza e uma paleta quente. Pedra, madeira e tecidos naturais criam um ambiente que parece ter nascido da própria natureza.",
       tips: [
-        "Sobreponha tapetes de tamanhos e texturas diferentes.",
-        "Encha a casa de plantas — quanto mais, melhor.",
-        "Misture estampas com coragem: floral, étnico, geométrico."
+        "Prefira móveis com formas curvas em vez de quinas retas.",
+        "Combine texturas: pedra bruta, madeira nervada, linho cru.",
+        "Use uma paleta quente: terracota, areia, verde-oliva."
       ],
-      img: "img/boho.jpg",
-      imgAlt: "Sala de estar boho chic, com macramê, plantas e quadros"
+      img: "img/organico.jpg",
+      imgAlt: "Sala de estar em estilo orgânico moderno, com móveis curvos e materiais naturais"
+    },
+    midcentury: {
+      name: "Mid-century Modern",
+      tagline: "O design dos anos 50 nunca saiu de moda.",
+      palette: ["#d98c3f","#6b4226","#4f6a5c"],
+      desc: "Você ama móveis com personalidade: pés palito, formas orgânicas e um quê retrô que combina perfeitamente com o hoje. Cada peça parece uma pequena obra de design.",
+      tips: [
+        "Invista em uma peça icônica (poltrona ou aparador) com pés palito.",
+        "Use cores saturadas em pontos de destaque: mostarda, terracota, verde-oliva.",
+        "Misture madeira escura (nogueira, imbuia) com formas geométricas."
+      ],
+      img: "img/midcentury.jpg",
+      imgAlt: "Sala de estar mid-century modern, com poltrona de pés palito e cores retrô"
     },
     classico: {
       name: "Clássico Contemporâneo",
@@ -364,98 +415,108 @@
       ],
       img: "img/classico.jpg",
       imgAlt: "Sala clássica contemporânea, com boiserie e piso em espinha de peixe"
-    },
-    rustico: {
-      name: "Rústico Aconchegante",
-      tagline: "Uma casa que parece um abraço.",
-      palette: ["#6b4a32","#e8dfc8","#6b7a52"],
-      desc: "Você busca conforto acima de tudo. Madeira maciça, tecidos naturais e cantos aconchegantes fazem da sua casa um refúgio — o tipo de lugar onde todo mundo quer ficar até tarde.",
-      tips: [
-        "Invista em madeira maciça e peças de reaproveitamento.",
-        "Crie um canto aconchegante com mantas e almofadas em fibras naturais.",
-        "Use cerâmica artesanal e vasos de barro na decoração."
-      ],
-      img: "img/rustico.jpg",
-      imgAlt: "Canto aconchegante com lareira a lenha e parede de madeira"
     }
   };
 
   var QUESTIONS = [
     {
-      text: "Domingo de manhã, você quer acordar em uma casa que é...",
+      text: "Como você descreve o seu apê ideal?",
       opts: [
-        { label: "Clean, sem excessos", style: "minimalista" },
-        { label: "Clara e cheia de luz", style: "escandinavo" },
-        { label: "Com tijolo e metal", style: "industrial" },
-        { label: "Cheia de plantas e cor", style: "boho" },
-        { label: "Elegante e atemporal", style: "classico" },
-        { label: "De madeira, com lareira", style: "rustico" }
+        { label: "Amplo e integrado, sem muitas paredes", weights: { contemporaneo: 2 } },
+        { label: "Sereno e natural", weights: { japandi: 2, escandinavo: 1 } },
+        { label: "Clean, sem excessos", weights: { minimalista: 2 } },
+        { label: "Claro e aconchegante", weights: { escandinavo: 2, japandi: 1 } },
+        { label: "Colorido e cheio de vida", weights: { boho: 2 } }
       ]
     },
     {
-      text: "Escolha uma paleta para pintar sua sala:",
+      text: "Qual material você mais quer ver no seu apê?",
       opts: [
-        { label: "Branco, cinza e preto", style: "minimalista" },
-        { label: "Branco gelo e madeira clara", style: "escandinavo" },
-        { label: "Cinza chumbo e ferrugem", style: "industrial" },
-        { label: "Terracota e mostarda", style: "boho" },
-        { label: "Off-white e dourado", style: "classico" },
-        { label: "Marrom terra e verde musgo", style: "rustico" }
+        { label: "Detalhes em metal preto e concreto aparente", weights: { industrial: 2 } },
+        { label: "Pedra natural e madeira mais rústica", weights: { organico: 2, japandi: 1 } },
+        { label: "Madeira escura e formas arredondadas", weights: { midcentury: 2 } },
+        { label: "Mármore e painéis de madeira na parede", weights: { classico: 2 } },
+        { label: "Madeira clara com acabamento fosco", weights: { contemporaneo: 2, minimalista: 1 } }
       ]
     },
     {
-      text: "Qual objeto não pode faltar na sua casa?",
+      text: "Escolha a paleta que mais te atrai pra sala:",
       opts: [
-        { label: "Uma escultura discreta", style: "minimalista" },
-        { label: "Manta de lã e velas", style: "escandinavo" },
-        { label: "Luminária estilo Edison", style: "industrial" },
-        { label: "Macramê feito à mão", style: "boho" },
-        { label: "Espelho emoldurado", style: "classico" },
-        { label: "Vaso de cerâmica", style: "rustico" }
+        { label: "Bege, caramelo e preto fosco", weights: { japandi: 2 } },
+        { label: "Off-white, areia e bege acinzentado", weights: { minimalista: 2, contemporaneo: 1 } },
+        { label: "Branco gelo e madeira clara", weights: { escandinavo: 2 } },
+        { label: "Terracota e mostarda", weights: { boho: 2, organico: 1 } },
+        { label: "Cinza-chumbo e ferrugem", weights: { industrial: 2 } }
+      ]
+    },
+    {
+      text: "Qual forma de móvel te agrada mais?",
+      opts: [
+        { label: "Formas arredondadas, sem quinas retas", weights: { organico: 2 } },
+        { label: "Pernas finas de madeira, com ar retrô", weights: { midcentury: 2 } },
+        { label: "Simétrico e elegante, com detalhes trabalhados", weights: { classico: 2 } },
+        { label: "Retas e práticas, sem enfeites", weights: { contemporaneo: 2, minimalista: 1 } },
+        { label: "Móveis baixos, quase no chão", weights: { japandi: 2 } }
+      ]
+    },
+    {
+      text: "Quais itens decorativos você teria no seu apê?",
+      opts: [
+        { label: "Pouquíssimos itens decorativos, mas com personalidade", weights: { minimalista: 2 } },
+        { label: "Manta de lã e tapete de pele", weights: { escandinavo: 2 } },
+        { label: "Itens com tecido e fibras naturais", weights: { boho: 2 } },
+        { label: "Luminária de metal com lâmpada exposta", weights: { industrial: 2 } },
+        { label: "Vaso de cerâmica artesanal", weights: { organico: 2, japandi: 1 } }
       ]
     },
     {
       text: "Como você recebe visitas em um sábado à noite?",
       opts: [
-        { label: "Poucas pessoas, taça de vinho", style: "minimalista" },
-        { label: "Jantar à luz de velas", style: "escandinavo" },
-        { label: "Amigos e cerveja artesanal", style: "industrial" },
-        { label: "Roda de conversa no chão", style: "boho" },
-        { label: "Jantar posto, taças de cristal", style: "classico" },
-        { label: "Fondue perto da lareira", style: "rustico" }
+        { label: "Drinks e vinil tocando na estante", weights: { midcentury: 2 } },
+        { label: "Jantar posto, taças de cristal", weights: { classico: 2 } },
+        { label: "Poucas pessoas, tudo funcional e prático", weights: { contemporaneo: 2 } },
+        { label: "Chá, silêncio e conversa tranquila", weights: { japandi: 2, escandinavo: 1 } },
+        { label: "Simples, sem cerimônia", weights: { minimalista: 2 } }
       ]
     },
     {
       text: "Escolha o tecido do seu sofá dos sonhos:",
       opts: [
-        { label: "Linho liso", style: "minimalista" },
-        { label: "Lã macia", style: "escandinavo" },
-        { label: "Couro envelhecido", style: "industrial" },
-        { label: "Veludo colorido", style: "boho" },
-        { label: "Veludo capitonê", style: "classico" },
-        { label: "Algodão cru", style: "rustico" }
-      ]
-    },
-    {
-      text: "Se sua casa fosse uma viagem, seria para...",
-      opts: [
-        { label: "Tóquio", style: "minimalista" },
-        { label: "Copenhague", style: "escandinavo" },
-        { label: "Nova York", style: "industrial" },
-        { label: "Marrocos", style: "boho" },
-        { label: "Paris", style: "classico" },
-        { label: "Toscana", style: "rustico" }
+        { label: "Lã macia", weights: { escandinavo: 2 } },
+        { label: "Veludo colorido", weights: { boho: 2 } },
+        { label: "Couro envelhecido", weights: { industrial: 2, midcentury: 1 } },
+        { label: "Linho cru, textura natural", weights: { organico: 2, japandi: 1 } },
+        { label: "Tecido com textura em relevo", weights: { midcentury: 2 } }
       ]
     },
     {
       text: "Qual frase mais combina com você?",
       opts: [
-        { label: "Menos é mais", style: "minimalista" },
-        { label: "Simplicidade com conforto", style: "escandinavo" },
-        { label: "Gosto do autêntico", style: "industrial" },
-        { label: "Minha casa, minha história", style: "boho" },
-        { label: "Elegância não sai de moda", style: "classico" },
-        { label: "Casa boa é um abraço", style: "rustico" }
+        { label: "Elegância não sai de moda", weights: { classico: 2 } },
+        { label: "Praticidade com estilo", weights: { contemporaneo: 2 } },
+        { label: "Simplicidade com alma", weights: { japandi: 2, minimalista: 1 } },
+        { label: "Menos é mais", weights: { minimalista: 2 } },
+        { label: "Simplicidade com conforto", weights: { escandinavo: 2 } }
+      ]
+    },
+    {
+      text: "Se seu apê fosse uma viagem, seria para...",
+      opts: [
+        { label: "Marrocos", weights: { boho: 2 } },
+        { label: "Nova York", weights: { industrial: 2, contemporaneo: 1 } },
+        { label: "Bali", weights: { organico: 2 } },
+        { label: "Los Angeles", weights: { midcentury: 2 } },
+        { label: "Paris", weights: { classico: 2 } }
+      ]
+    },
+    {
+      text: "O que mais te incomoda em um apê?",
+      opts: [
+        { label: "Desorganização e falta de função", weights: { contemporaneo: 2 } },
+        { label: "Excesso de objetos e ruído visual", weights: { japandi: 2, minimalista: 1 } },
+        { label: "Bagunça visual", weights: { minimalista: 2 } },
+        { label: "Ambientes escuros e sem luz natural", weights: { escandinavo: 2 } },
+        { label: "Apê sem personalidade, tudo igual", weights: { boho: 2 } }
       ]
     }
   ];
@@ -500,15 +561,17 @@
       btn.type = "button";
       btn.className = "opt";
       btn.textContent = opt.label;
-      btn.addEventListener("click", function(){ selectOption(opt.style); });
+      btn.addEventListener("click", function(){ selectOption(opt.weights); });
       optsWrap.appendChild(btn);
     });
 
     showScreen("question");
   }
 
-  function selectOption(styleKey){
-    state.scores[styleKey] = (state.scores[styleKey] || 0) + 1;
+  function selectOption(weights){
+    Object.keys(weights).forEach(function(styleKey){
+      state.scores[styleKey] = (state.scores[styleKey] || 0) + weights[styleKey];
+    });
     state.qIndex += 1;
     if (state.qIndex < QUESTIONS.length){
       renderQuestion();
@@ -568,10 +631,35 @@
     renderQuestion();
   });
 
+  var leadPhoneEl = document.getElementById("leadPhone");
+  leadPhoneEl.addEventListener("input", function(){ leadPhoneEl.setCustomValidity(""); });
+
+  function sendLeadToSheet(nome, email, whatsapp, estilo){
+    if (!LEADS_ENDPOINT) return;
+    fetch(LEADS_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ nome: nome, email: email, whatsapp: whatsapp, estilo: estilo })
+    }).catch(function(){});
+  }
+
   document.getElementById("leadForm").addEventListener("submit", function(e){
     e.preventDefault();
     var nameEl = document.getElementById("leadName");
-    state.name = nameEl.value.trim().split(" ")[0] || "";
+    var emailEl = document.getElementById("leadEmail");
+    var digits = leadPhoneEl.value.replace(/\D/g, "");
+    if (digits.length < 10 || digits.length > 11) {
+      leadPhoneEl.setCustomValidity("Digite um WhatsApp válido, com DDD (10 ou 11 dígitos).");
+      leadPhoneEl.reportValidity();
+      return;
+    }
+    leadPhoneEl.setCustomValidity("");
+    var fullName = nameEl.value.trim();
+    state.name = fullName.split(" ")[0] || "";
+    var styleKey = computeResult();
+    var styleName = STYLES[styleKey] ? STYLES[styleKey].name : "";
+    sendLeadToSheet(fullName, emailEl.value.trim(), leadPhoneEl.value.trim(), styleName);
     renderResult();
   });
 

@@ -1,6 +1,6 @@
 # Bússola de Estilo — Quiz Decorafit
 
-Quiz de 7 perguntas para descobrir o estilo de decoração de interiores (Minimalista, Escandinavo, Industrial, Boho Chic, Clássico Contemporâneo, Rústico Aconchegante). Pensado como link de bio/story do Instagram da Decorafit.
+Quiz de 10 perguntas para descobrir o estilo de decoração de interiores (Contemporâneo, Japandi, Minimalista Aconchegante, Escandinavo, Boho Chic, Industrial, Orgânico Moderno, Mid-century Modern, Clássico Contemporâneo). Pensado como link de bio/story do Instagram da Decorafit.
 
 ## Estrutura
 
